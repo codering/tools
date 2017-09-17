@@ -205,11 +205,10 @@ code {
       var pattern = new RegExp("[`~!@#$%^&*()-_+=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】‘；：”“'。，、？]")
       var rs = "";
       for (var i = 0; i < s.length; i++) {
-          rs = rs+s.substr(i, 1).replace(pattern, '');
+          rs = rs + s.substr(i, 1).replace(pattern, '');
       }
       return rs;
     }
-
 
     var carname = $("carname");
     var result = $("result");
@@ -227,9 +226,9 @@ code {
 
     window.search = function(){
         result.innerHTML = "";
-        var inputName = clearString(carname.value).trim();
+        var inputName = clearString(carname.value.toLowerCase()).trim();
         carname.value = inputName;
-        var regx = new RegExp(inputName);
+        var regx = new RegExp(inputName, 'i');
         var results = [];
         for(var i = 0, len = data.length; i < len; i++) {
           if( regx.test(data[i].keyword)) {
