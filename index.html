@@ -229,7 +229,7 @@ code {
         result.innerHTML = "";
         var inputName = clearString(carname.value).trim();
         carname.value = inputName;
-        var regx = new RegExp(inputName, 'i');
+        var regx = new RegExp(inputName);
         var results = [];
         for(var i = 0, len = data.length; i < len; i++) {
           if( regx.test(data[i].keyword)) {
