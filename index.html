@@ -1,247 +1,94 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-<meta name="format-detection" content="telphone=no, email=no" />
-<meta name="renderer" content="webkit">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="HandheldFriendly" content="true">
-<meta name="MobileOptimized" content="320">
-<meta name="screen-orientation" content="portrait">
-<meta name="x5-orientation" content="portrait">
-<meta name="msapplication-tap-highlight" content="no">
-<title>Car Logo Search</title>
-<style type="text/css">
-* {
-    cursor: pointer;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-touch-callout: none;
-    -webkit-user-drag: none;
-    margin: 0;
-    padding: 0;
-}
-
-input[type=text]:focus,
-input[type=password]:focus,
-input[type=email]:focus,
-input[type=url]:focus,
-input[type=date]:focus,
-input[type=month]:focus,
-input[type=time]:focus,
-input[type=datetime]:focus,
-input[type=datetime-local]:focus,
-input[type=week]:focus,
-input[type=number]:focus,
-input[type=search]:focus,
-input[type=tel]:focus,
-input[type=color]:focus,
-select:focus,
-textarea:focus {
-  outline: 0;
-  outline: thin dotted \9;
-  border-color: #129FEA
-}
-
-html, body {
-    min-height: 100%;
-    font-size: 10px;
-}
-
-html {
-    font-family:
-        HelveticaNeue-Light,
-        'Helvetica Neue Light',
-        'Helvetica Neue',
-        Helvetica,
-        Arial,
-        sans-serif; /* 1 */
-    -ms-text-size-adjust: 100%; /* 2 */
-    -webkit-text-size-adjust: 100%; /* 2 */
-}
-
-h1 {
-    font-size: 3rem;
-    text-align: center;
-    padding: 20px 0;
-}
-
-li {
-    list-style: none;
-}
-
-ul {
-    padding: 0;
-    margin: 0;
-}
-
-blockquote {
-    font-size: 1.3rem;
-    line-height: 1.2em;
-}
-
-strong {
-    font-weight: bold;
-    color: red;
-}
-
-h3 {
-    font-size: 1.6rem;
-    padding: 0.2em 0 0.6em;
-}
-
-h4 {
-    text-align: center;
-    line-height: 1em;
-    padding-bottom: 20px;
-    color: #666;
-    font-weight: normal;
-    font-size: 1.4rem;
-    padding-top: 5px;
-}
-
-p {
-    font-size: 1.3rem;
-    line-height: 1.2em;
-    margin: 6px 0;
-}
-
-button {
-    display: block;
-    width: 100%;
-    font-size: 2rem;
-    line-height: 2.5em;
-    background: #df4e5f;
-    color: #fff;
-    border-radius: 5px;
-    max-width: 402px;
-    border: none;
-}
-input[type="text"], select {
-    vertical-align: baseline;
-    text-transform: none;
-    letter-spacing: 0.01em;
-    padding: .5em .6em;
-    display: inline-block;
-    box-shadow: inset 0 1px 3px #ddd;
-    border-radius: 4px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    display: block;
-    font-size: 1.4rem;
-    width: 200px;
-    height: 30px;
-}
-input[type="range"] {
-    width: 200px;
-}
-table {
-    width: 100%;
-}
-.main {
-    margin: 0 auto;
-    max-width: 400px;
-    padding: 0 20px;
-}
-td {
-    padding: 10px 0;
-    font-size: 1.4rem;
-    line-height: 1.4em;
-}
-tr td:first-child {
-    text-align: right;
-    padding-right: 20px;
-    padding-left: 20px;
-}
-code {
-    background: #ccc;
-    padding: 1px 2px;
-    border-radius: 3px;
-}
-#result {
-    text-align: center!important;
-    display: block;
-    width: 100%;
-    font-size: 3rem;
-    font-weight: bold;
-    font-family: consolas, monaco, menlo, 'courier new', courier, monospace, 'MS Courier New', 'American Typewriter';
-    word-wrap: break-word;
-    word-break: break-all;
-    line-height: 1.4em;
-}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telphone=no, email=no" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>Car Logo Search</title>
+    <link rel="stylesheet" href="assets/css/car-logo.css">
 </head>
+
 <body>
-<div class="main">
-<h1>Car Logo Search</h1>
-<table cellspacing="0" border="0">
-    <tr>
-        <td><span>Name</span></td>
-        <td>
-            <input id="carname" type="text" placeholder="ford/福特" onkeyup="search()">
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <span id="result"></span>
-        </td>
-    </tr>
-</table>
-</div>
+    <div class="main">
+        <h1>Car Logo Search</h1>
+        <table cellspacing="0" border="0">
+            <tr>
+                <td><span>Name</span></td>
+                <td>
+                    <input id="carname" type="text" placeholder="ford/福特" onkeyup="search()">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span id="result"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-<script type="text/javascript">
-(function(){
+    <script type="text/javascript">
+        (function () {
 
-    function $(id){
-        return document.getElementById(id);
-    }
+            function $(id) {
+                return document.getElementById(id);
+            }
 
-    function clearString(s){
-      var pattern = new RegExp("[`~!@#$%^&*()-_+=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】‘；：”“'。，、？]")
-      var rs = "";
-      for (var i = 0; i < s.length; i++) {
-          rs = rs + s.substr(i, 1).replace(pattern, '');
-      }
-      return rs;
-    }
+            function clearString(s) {
+                var pattern = new RegExp("[`~!@#$%^&*\(\)-_+=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】‘；：”“'。，、？]")
+                var rs = "";
+                for (var i = 0; i < s.length; i++) {
+                    rs = rs + s.substr(i, 1).replace(pattern, '');
+                }
+                return rs;
+            }
 
-    var carname = $("carname");
-    var result = $("result");
+            var carname = $("carname");
+            var result = $("result");
 
-    var data = [
-      {name: "宝马", image: "bmw.jpg", keyword: "bmw_宝马"},
-      {name: "别克", image: "buick.jpg", keyword: "buick_别克"},
-      {name: "迷你", image: "mini.jpg", keyword: "mini_迷你"},
-      {name: "沃尔沃", image: "volvo.jpg", keyword: "volvo_沃尔沃"},
-      {name: "福特", image: "ford.jpg", keyword: "ford_福特"},
-      {name: "法拉利", image: "ferrari.jpg", keyword: "ferrari_法拉利"},
-      {name: "保时捷", image: "porsche.jpg", keyword: "porsche_保时捷"},
-      {name: "兰博基尼", image: "lamborghini.jpg", keyword: "lamborghini_兰博基尼"}
-    ]
-
-    window.search = function(){
-        result.innerHTML = "";
-        var inputName = clearString(carname.value.toLowerCase()).trim();
-        carname.value = inputName;
-        var regx = new RegExp(inputName, 'i');
-        var results = [];
-        for(var i = 0, len = data.length; i < len; i++) {
-          if( regx.test(data[i].keyword)) {
-            var div = document.createElement("div")
-            div.style.display = "inline-block"
-            div.innerHTML = "<img style='max-width:160px;' src='./assets/img/" + data[i].image + "'><p>" + data[i].name + "</p>"
-            result.appendChild(div)
-          }
-        }
-    }
+            var logoData = [
+                { name: "宝马", enName: 'BMW', image: "bmw.jpg", keyword: "bmw_宝马" },
+                { name: "别克", enName: 'BUICK', image: "buick.jpg", keyword: "buick_别克" },
+                { name: "迷你", enName: 'MINI', image: "mini.jpg", keyword: "mini_迷你" },
+                { name: "沃尔沃", enName: 'VOLVO', image: "volvo.jpg", keyword: "volvo_沃尔沃" },
+                { name: "福特", enName: 'FORD', image: "ford.jpg", keyword: "ford_福特" },
+                { name: "法拉利", enName: 'FERRARI', image: "ferrari.jpg", keyword: "ferrari_法拉利" },
+                { name: "保时捷", enName: 'PORSCHE', image: "porsche.jpg", keyword: "porsche_保时捷" },
+                { name: "兰博基尼", enName: 'LAMBORGHINI', image: "lamborghini.jpg", keyword: "lamborghini_兰博基尼" }
+            ]
 
 
-})();
-</script>
+
+            window.search = function () {
+                result.innerHTML = "";
+                var inputName = carname.value.trim();
+                carname.value = inputName;
+                var regx = new RegExp(inputName, 'i');
+                var results = [];
+                logoData.forEach(function (logo) {
+                    if (regx.test(logo.keyword)) {
+                        var div = document.createElement("div")
+                        div.style.display = "inline-block"
+                        div.innerHTML = "<img style='max-width:160px;' src='./assets/img/" +
+                            logo.image + "'><p>" + logo.name + "(" + logo.enName + ")</p>"
+                        result.appendChild(div)
+                    }
+                });
+            }
+
+
+        })();
+
+    </script>
 </body>
+
 </html>

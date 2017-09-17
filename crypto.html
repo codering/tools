@@ -6,6 +6,7 @@
   <body>
     <div>
       <button onclick="crypto(sha256)">sha256</button>
+      <button onclick="crypto(md5)">md5</button>
       <button onclick="crypto(doubleMD5)">md5 * 2</button>
     </div>
     <div>
@@ -29,6 +30,9 @@
 
       function crypto(cb) {
         var v = document.getElementById("in").value;
+        if (!v) {
+          return;
+        }
         v = v.split('\n');
         document.getElementById("out").value = v.map(function(item){
           return cb(item);
